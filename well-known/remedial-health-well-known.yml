@@ -2,15 +2,20 @@ generated: '2026-07-21'
 method: probed
 source: live probes of the Remedial Health marketing host
 host: https://www.remedial.health
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-notes: >-
-  No /.well-known discovery surface published. Remedial Health exposes no public
-  API, developer portal, or documentation host (developers.remedial.health and
-  docs.remedial.health do not resolve). Absence recorded as valid data; no
-  WellKnown scoring pointer wired.
+notes: No /.well-known discovery surface published. Remedial Health exposes no public API, developer portal,
+  or documentation host (developers.remedial.health and docs.remedial.health do not resolve). Absence
+  recorded as valid data; no WellKnown scoring pointer wired.
+hosts:
+- host: https://www.remedial.health
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
